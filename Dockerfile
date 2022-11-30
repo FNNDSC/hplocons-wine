@@ -1,4 +1,4 @@
-FROM ubuntu:focal
+FROM ubuntu:22.10
 
 ENV HOME /root
 ENV DEBIAN_FRONTEND noninteractive
@@ -7,7 +7,7 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
 
 RUN dpkg --add-architecture i386 && \
-    apt-get update && apt-get -y install python3 xvfb x11vnc xdotool wget tar supervisor net-tools fluxbox gnupg2 && \
+    apt-get update && apt-get -y upgrade && apt-get -y install python3 xvfb x11vnc xdotool wget tar supervisor net-tools fluxbox gnupg2 && \
     wget -O - https://dl.winehq.org/wine-builds/winehq.key | apt-key add -  && \
     echo 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main' |tee /etc/apt/sources.list.d/winehq.list && \
     apt-get update && apt-get -y install winehq-devel  && \
